@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>影像旅誌 — Photo Journey</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&family=Noto+Serif+TC:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #fafafa;
+      --bg-card: #ffffff;
+      --bg-elevated: #f5f5f0;
+      --text: #1a1a1a;
+      --text-muted: #6b6b6b;
+      --text-dim: #a0a0a0;
+      --accent: #3a3a3a;
+      --accent-soft: rgba(58,58,58,0.06);
+      --gold: #8a7a5a;
+      --gold-soft: rgba(138,122,90,0.08);
+      --border: rgba(0,0,0,0.08);
+      --border-accent: rgba(0,0,0,0.15);
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Sans TC', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Serif display font */
+    .serif { font-family: 'Cormorant Garamond', 'Noto Serif TC', Georgia, serif; font-weight: 400; }
+
+    /* Header */
+    .header {
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(0,0,0,0.02) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header-eyebrow {
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .header h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 3.2rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .header-sub {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-muted);
+      margin-top: 0.6rem;
+      letter-spacing: 0.04em;
+    }
+
+    .header-line {
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+      margin: 1.5rem auto 0;
+    }
+
+    /* Upload Zone */
+    .upload-zone {
+      max-width: 780px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+
+    .upload-box {
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 3.5rem 2rem;
+      text-align: center;
+      background: var(--bg-card);
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .upload-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid transparent;
+      transition: border-color 0.4s;
+    }
+
+    .upload-box:hover {
+      background: var(--bg-elevated);
+      border-color: var(--border-accent);
+    }
+
+    .upload-box:hover::before {
+      border-color: var(--accent);
+      opacity: 0.3;
+    }
+
+    .upload-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+      opacity: 0.6;
+    }
+
+    .upload-box h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .upload-box p {
+      color: var(--text-dim);
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .upload-formats {
+      margin-top: 1rem;
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+    }
+
+    /* Processing */
+    .processing {
+      display: none;
+      max-width: 780px;
+      margin: 1.5rem auto;
+      padding: 0 2rem;
+    }
+
+    .processing.active { display: block; }
+
+    .process-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.5rem 2rem;
+    }
+
+    .process-title {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      letter-spacing: 0.02em;
+    }
+
+    .step.done { color: var(--text-muted); }
+    .step.active { color: var(--text); }
+
+    .step-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 1px solid var(--text-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      flex-shrink: 0;
+    }
+
+    .step.done .step-icon {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    .step.active .step-icon {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+      animation: breathe 2s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+      0%, 100% { box-shadow: 0 0 0 3px var(--accent-soft); }
+      50% { box-shadow: 0 0 0 8px rgba(58,58,58,0); }
+    }
+
+    /* Stats */
+    .stats-bar {
+      max-width: 780px;
+      margin: 2.5rem auto;
+      padding: 0 2rem;
+      display: flex;
+      gap: 1px;
+      background: rgba(0,0,0,0.06);
+    }
+
+    .stat {
+      flex: 1;
+      background: var(--bg-card);
+      padding: 1.5rem 1rem;
+      text-align: center;
+    }
+
+    .stat:first-child { border-radius: 2px 0 0 2px; }
+    .stat:last-child { border-radius: 0 2px 2px 0; }
+
+    .stat-num {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-top: 0.5rem;
+    }
+
+    /* Map Preview */
+    .map-preview {
+      max-width: 780px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+
+    .section-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 1.2rem;
+    }
+
+    .map-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .map-placeholder {
+      width: 100%;
+      aspect-ratio: 21/9;
+      background: linear-gradient(160deg, #e8e6e0 0%, #f0ede6 40%, #eae7e1 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 25% 50%, rgba(0,0,0,0.03) 0%, transparent 40%),
+        radial-gradient(circle at 75% 50%, rgba(138,122,90,0.06) 0%, transparent 40%);
+    }
+
+    .map-route {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .map-stop {
+      text-align: center;
+      position: relative;
+    }
+
+    .map-stop-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin: 0 auto 0.5rem;
+      box-shadow: 0 0 12px rgba(58,58,58,0.2);
+    }
+
+    .map-stop-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 0.85rem;
+      color: var(--text);
+      font-style: italic;
+    }
+
+    .map-connector {
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), rgba(58,58,58,0.15));
+      margin-bottom: 1.2rem;
+    }
+
+    .map-info {
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+    }
+
+    .map-info-text {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      letter-spacing: 0.06em;
+    }
+
+    .map-btn {
+      padding: 0.5rem 1.2rem;
+      border: 1px solid var(--border-accent);
+      color: var(--accent);
+      border-radius: 2px;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .map-btn:hover {
+      background: var(--accent-soft);
+    }
+
+    /* Timeline */
+    .timeline-section {
+      max-width: 780px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 3rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, var(--accent), var(--border), transparent);
+    }
+
+    /* Date Group */
+    .date-group {
+      margin-bottom: 3rem;
+    }
+
+    .date-label {
+      position: relative;
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding: 0.3rem 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .date-label::before {
+      content: '';
+      position: absolute;
+      left: -3.18rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px rgba(58,58,58,0.15);
+    }
+
+    /* Photo Card */
+    .photo-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      position: relative;
+      transition: border-color 0.3s;
+    }
+
+    .photo-card:hover {
+      border-color: var(--border-accent);
+    }
+
+    .photo-card::before {
+      content: '';
+      position: absolute;
+      left: -3.28rem;
+      top: 2.5rem;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--text-dim);
+    }
+
+    .photo-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 2.2/1;
+      overflow: hidden;
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+    }
+
+    .photo-placeholder.temple {
+      background: linear-gradient(160deg, #f0ebe0 0%, #e8e0d0 40%, #ede6d8 100%);
+    }
+
+    .photo-placeholder.mountain {
+      background: linear-gradient(160deg, #e4ebe6 0%, #dce6de 40%, #e0e8e2 100%);
+    }
+
+    .photo-placeholder.food {
+      background: linear-gradient(160deg, #f0e6e4 0%, #ecdcd8 40%, #eee2de 100%);
+    }
+
+    .photo-placeholder.ocean {
+      background: linear-gradient(160deg, #e2e8f0 0%, #dce4ee 40%, #e0e6ef 100%);
+    }
+
+    .photo-time-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255,255,255,0.85);
+      color: var(--text);
+      padding: 0.3rem 0.8rem;
+      border-radius: 2px;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+    }
+
+    .photo-info {
+      padding: 1.5rem 1.8rem 1.8rem;
+    }
+
+    .location-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .location-pin {
+      color: var(--accent);
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+
+    .location-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 400;
+      font-size: 1.4rem;
+      color: var(--text);
+      letter-spacing: 0.02em;
+    }
+
+    .gps-coords {
+      font-size: 0.62rem;
+      color: var(--text-dim);
+      margin-left: auto;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
+    }
+
+    .description {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-top: 0.8rem;
+      font-weight: 300;
+    }
+
+    .ai-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 1rem;
+      padding: 0.3rem 0.6rem;
+      background: var(--accent-soft);
+      border-radius: 2px;
+      border: 1px solid var(--border-accent);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      font-size: 0.62rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 2px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      letter-spacing: 0.06em;
+      transition: all 0.3s;
+    }
+
+    .tag:hover {
+      border-color: var(--text-muted);
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 4rem 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer p {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--text-dim);
+      font-weight: 300;
+    }
+
+    .footer .footer-sub {
+      font-family: 'Inter', sans-serif;
+      font-style: normal;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-top: 0.8rem;
+    }
+
+    /* Responsive */
+    @media (min-width: 768px) {
+      .header h1 { font-size: 4rem; }
+      .header { padding: 5rem 2rem 4rem; }
+    }
+
+    @media (max-width: 600px) {
+      .map-route { gap: 1rem; }
+      .map-connector { width: 20px; }
+      .map-stop-name { font-size: 0.72rem; }
+      .location-name { font-size: 1.1rem; }
+      .gps-coords { display: none; }
+    }
+
+    /* Mockup Banner */
+    .mockup-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      color: var(--text-muted);
+      text-align: center;
+      padding: 0.7rem;
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .mockup-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: glow 2.5s ease-in-out infinite;
+    }
+
+    @keyframes glow {
+      0%, 100% { opacity: 1; box-shadow: 0 0 4px rgba(58,58,58,0.3); }
+      50% { opacity: 0.4; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-eyebrow">旅行筆記</div>
+    <h1 class="serif">影像旅誌</h1>
+    <p class="header-sub">將照片交織成一段旅程</p>
+    <div class="header-line"></div>
+  </header>
+
+  <!-- Upload Zone -->
+  <div class="upload-zone">
+    <div class="upload-box" onclick="showProcessing()">
+      <div class="upload-icon">+</div>
+      <h3>將旅途的片刻留在此處</h3>
+      <p>自動擷取地點、時間，並為你撰寫故事</p>
+      <div class="upload-formats">支援 JPG / HEIC / PNG / RAW 含 EXIF 與 GPS</div>
+    </div>
+  </div>
+
+  <!-- Processing -->
+  <div class="processing" id="processing">
+    <div class="process-card">
+      <div class="process-title">正在處理 3 張照片</div>
+      <div class="process-steps">
+        <div class="step done">
+          <div class="step-icon">&#10003;</div>
+          <span>讀取 EXIF 資訊與 GPS 座標</span>
+        </div>
+        <div class="step done">
+          <div class="step-icon">&#10003;</div>
+          <span>反向地理編碼 &mdash; 解析地點名稱</span>
+        </div>
+        <div class="step active">
+          <div class="step-icon"></div>
+          <span>AI 正在撰寫景點介紹⋯</span>
+        </div>
+        <div class="step">
+          <div class="step-icon"></div>
+          <span>編入時間軸</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-num serif">12</div>
+      <div class="stat-label">張照片</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num serif">4</div>
+      <div class="stat-label">個地點</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num serif">3</div>
+      <div class="stat-label">天旅程</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num serif">156</div>
+      <div class="stat-label">公里</div>
+    </div>
+  </div>
+
+  <!-- Map -->
+  <div class="map-preview">
+    <div class="section-label">路線</div>
+    <div class="map-box">
+      <div class="map-placeholder">
+        <div class="map-route">
+          <div class="map-stop">
+            <div class="map-stop-dot"></div>
+            <div class="map-stop-name">京都</div>
+          </div>
+          <div class="map-connector"></div>
+          <div class="map-stop">
+            <div class="map-stop-dot"></div>
+            <div class="map-stop-name">大阪</div>
+          </div>
+          <div class="map-connector"></div>
+          <div class="map-stop">
+            <div class="map-stop-dot"></div>
+            <div class="map-stop-name">奈良</div>
+          </div>
+          <div class="map-connector"></div>
+          <div class="map-stop">
+            <div class="map-stop-dot"></div>
+            <div class="map-stop-name">神戶</div>
+          </div>
+        </div>
+      </div>
+      <div class="map-info">
+        <span class="map-info-text">3 天、4 個城市</span>
+        <button class="map-btn">查看完整地圖</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="timeline-section">
+    <div class="section-label">旅行紀事</div>
+
+    <div class="timeline">
+
+      <!-- Day 1 -->
+      <div class="date-group">
+        <div class="date-label">2026 年 4 月 2 日 &mdash; 第一天</div>
+
+        <div class="photo-card">
+          <div class="photo-wrapper">
+            <div class="photo-placeholder temple">&#127983;</div>
+            <div class="photo-time-badge">09:23</div>
+          </div>
+          <div class="photo-info">
+            <div class="location-row">
+              <span class="location-pin">地點</span>
+              <span class="location-name serif">金閣寺</span>
+              <span class="gps-coords">35.0394, 135.7292</span>
+            </div>
+            <div class="description">
+              金閣寺又名鹿苑寺，是京都北山一座禪宗寺院。建於 1397 年，原為足利義滿將軍的別墅，上方兩層樓皆以金箔包覆。舍利殿倒映於鏡湖池的水面之上，構成日本最具代表性的景色之一，靜謐而華麗。
+            </div>
+            <div class="ai-badge">AI 生成介紹</div>
+            <div class="tags">
+              <span class="tag">寺院</span>
+              <span class="tag">京都</span>
+              <span class="tag">世界遺產</span>
+              <span class="tag">禪意</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-wrapper">
+            <div class="photo-placeholder mountain">&#127883;</div>
+            <div class="photo-time-badge">14:15</div>
+          </div>
+          <div class="photo-info">
+            <div class="location-row">
+              <span class="location-pin">地點</span>
+              <span class="location-name serif">嵐山竹林小徑</span>
+              <span class="gps-coords">35.0173, 135.6711</span>
+            </div>
+            <div class="description">
+              走進嵐山的高聳竹林，世界彷彿瞬間安靜下來。陽光自濃密的竹葉間篩落，在小徑上投下移動的光影。竹林通往天龍寺，是聯合國教科文組織認定的世界遺產，精心布局的庭園與周遭山景互為倒影。
+            </div>
+            <div class="ai-badge">AI 生成介紹</div>
+            <div class="tags">
+              <span class="tag">自然</span>
+              <span class="tag">竹林</span>
+              <span class="tag">嵐山</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day 2 -->
+      <div class="date-group">
+        <div class="date-label">2026 年 4 月 3 日 &mdash; 第二天</div>
+
+        <div class="photo-card">
+          <div class="photo-wrapper">
+            <div class="photo-placeholder food">&#127836;</div>
+            <div class="photo-time-badge">12:40</div>
+          </div>
+          <div class="photo-info">
+            <div class="location-row">
+              <span class="location-pin">地點</span>
+              <span class="location-name serif">道頓堀，大阪</span>
+              <span class="gps-coords">34.6687, 135.5013</span>
+            </div>
+            <div class="description">
+              道頓堀將所有感官體驗濃縮在一條沿河街道裡。霓虹燈招牌在鐵板升起的蒸氣之上閃爍跳動，這裡是大阪<em>「食倒れ」</em>文化的核心 &mdash; 吃到倒下為止。必做儀式：站在路邊攤前吃章魚燒，看著固力果跑者在黃昏中亮起。
+            </div>
+            <div class="ai-badge">AI 生成介紹</div>
+            <div class="tags">
+              <span class="tag">美食</span>
+              <span class="tag">大阪</span>
+              <span class="tag">街頭文化</span>
+              <span class="tag">霓虹</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day 3 -->
+      <div class="date-group">
+        <div class="date-label">2026 年 4 月 4 日 &mdash; 第三天</div>
+
+        <div class="photo-card">
+          <div class="photo-wrapper">
+            <div class="photo-placeholder ocean">&#129420;</div>
+            <div class="photo-time-badge">10:05</div>
+          </div>
+          <div class="photo-info">
+            <div class="location-row">
+              <span class="location-pin">地點</span>
+              <span class="location-name serif">奈良公園</span>
+              <span class="gps-coords">34.6851, 135.8430</span>
+            </div>
+            <div class="description">
+              超過一千兩百頭的梅花鹿自由漫步於奈良公園之間，在神道信仰中被視為神的使者。牠們會在接過<em>鹿仙貝</em>前低頭致意，這個動作既古老，又令人動容。公園之外，東大寺的大佛殿以其磅礴的木構規模，守護著日本最大的青銅大佛之一。
+            </div>
+            <div class="ai-badge">AI 生成介紹</div>
+            <div class="tags">
+              <span class="tag">奈良</span>
+              <span class="tag">神鹿</span>
+              <span class="tag">寺院</span>
+              <span class="tag">自然</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer" style="padding-bottom: 4rem;">
+    <p>讓你的照片，說出旅程的故事</p>
+    <p class="footer-sub">繼續上傳，延續這段旅誌</p>
+  </div>
+
+  <!-- Mockup Banner -->
+  <div class="mockup-banner">
+    <div class="mockup-dot"></div>
+    Mockup &mdash; 影像旅誌
+  </div>
+
+  <script>
+    function showProcessing() {
+      const el = document.getElementById('processing');
+      el.classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,438 @@
+{
+  "generated_at": "2026-04-05T04:55:11.614Z",
+  "stats": {
+    "photos": 10,
+    "entries": 7,
+    "locations": 3,
+    "days": 4,
+    "km": 8188,
+    "trips": 2
+  },
+  "trips": [
+    {
+      "id": "ba8nz",
+      "title": "2025 羅弗敦群島・極光邊境",
+      "subtitle": "北緯 68 度的三月，紅色漁村與雪峰倒影之間",
+      "date_start": "2025-03-05",
+      "date_end": "2025-03-07",
+      "cover_photo_id": "5kdyk0",
+      "stats": {
+        "photos": 8,
+        "entries": 6,
+        "locations": 2,
+        "days": 3,
+        "km": 18
+      },
+      "entries": [
+        {
+          "id": "vzvr2u",
+          "date": "2025-03-05",
+          "time": "19:02",
+          "location": {
+            "lat": 67.945305,
+            "lon": 13.131777,
+            "place_name": "Hamnøy 漁村",
+            "city": "Hamnøya",
+            "country": "挪威",
+            "country_code": "NO",
+            "display_name": "Breisundet bru, Hamnøya, Moskenes, 诺尔兰郡, 8390, 挪威"
+          },
+          "photos": [
+            {
+              "id": "5kdyk0",
+              "filename": "IMG20250305190210.HEIC",
+              "thumb": "public/thumbs/5kdyk0.jpg",
+              "taken_at": "2025-03-05T11:02:10.000Z",
+              "time": "19:02",
+              "camera": "OPPO OPPO Find X8 Pro",
+              "lens": "OPPO Find X8 Pro  back camera 6.06mm f/1.6",
+              "settings": {
+                "iso": 12800,
+                "f": "f/1.6",
+                "shutter": 0.208570826,
+                "focal": "6mm"
+              },
+              "location": {
+                "lat": 67.945305,
+                "lon": 13.131777,
+                "place_name": "Hamnøy 漁村",
+                "city": "Hamnøya",
+                "country": "挪威",
+                "country_code": "NO",
+                "display_name": "Breisundet bru, Hamnøya, Moskenes, 诺尔兰郡, 8390, 挪威"
+              }
+            }
+          ],
+          "ai_description": "傍晚七點的 Breisundet 橋，羅弗敦群島的天光還未完全褪去。Hamnøy 的紅色漁民小屋 rorbuer 靜靜依偎在黑色礁岩之間，身後是直插入海的陡峭山壁。北緯 68 度的三月，空氣冷冽清透，海面幾乎不起波紋，把山峰與天色一起收進水裡。",
+          "tags": [
+            "羅弗敦群島",
+            "挪威",
+            "漁村",
+            "北極圈"
+          ]
+        },
+        {
+          "id": "oo7zkv",
+          "date": "2025-03-05",
+          "time": "20:25",
+          "location": {
+            "lat": 67.881547,
+            "lon": 12.984292,
+            "place_name": "Å 村（羅弗敦最南）",
+            "city": "Å",
+            "country": "挪威",
+            "country_code": "NO",
+            "display_name": "Å-veien, Tind, Å, Moskenes, 诺尔兰郡, 8392, 挪威"
+          },
+          "photos": [
+            {
+              "id": "35ercm",
+              "filename": "IMG_5120.JPG",
+              "thumb": "public/thumbs/35ercm.jpg",
+              "taken_at": "2025-03-05T12:25:20.000Z",
+              "time": "20:25",
+              "camera": "Apple iPhone 16 Pro",
+              "lens": "iPhone 16 Pro back triple camera 6.765mm f/1.78",
+              "settings": {
+                "iso": 320,
+                "f": "f/1.7799999713880652",
+                "shutter": 0.016666666666666666,
+                "focal": "7mm"
+              },
+              "location": {
+                "lat": 67.881547,
+                "lon": 12.984292,
+                "place_name": "Å 村（羅弗敦最南）",
+                "city": "Å",
+                "country": "挪威",
+                "country_code": "NO",
+                "display_name": "Å-veien, Tind, Å, Moskenes, 诺尔兰郡, 8392, 挪威"
+              }
+            }
+          ],
+          "ai_description": "將近午夜，Å 的街道空無一人，只有山、海與天空彼此低聲對話。長曝光之下，雲被拉出柔軟的紋理，漁村的燈火像散落在雪地上的細碎琥珀。這樣的夜，總讓人不自覺放慢呼吸——在極地的冬季裡，黑夜本身就是一種風景。",
+          "tags": [
+            "夜色",
+            "長曝光",
+            "羅弗敦群島",
+            "挪威"
+          ]
+        },
+        {
+          "id": "df4uno",
+          "date": "2025-03-05",
+          "time": "22:32",
+          "location": {
+            "lat": 67.882126,
+            "lon": 12.983593,
+            "place_name": "Å 村（羅弗敦最南）",
+            "city": "Å",
+            "country": "挪威",
+            "country_code": "NO",
+            "display_name": "Moskenesveien, Tind, Å, Moskenes, 诺尔兰郡, 8392, 挪威"
+          },
+          "photos": [
+            {
+              "id": "gqfn1f",
+              "filename": "IMG20250305223235.HEIC",
+              "thumb": "public/thumbs/gqfn1f.jpg",
+              "taken_at": "2025-03-05T14:32:35.000Z",
+              "time": "22:32",
+              "camera": "OPPO OPPO Find X8 Pro",
+              "lens": "OPPO Find X8 Pro  back camera 6.06mm f/1.6",
+              "settings": {
+                "iso": 12800,
+                "f": "f/1.6",
+                "shutter": 0.323510936,
+                "focal": "6mm"
+              },
+              "location": {
+                "lat": 67.882126,
+                "lon": 12.983593,
+                "place_name": "Å 村（羅弗敦最南）",
+                "city": "Å",
+                "country": "挪威",
+                "country_code": "NO",
+                "display_name": "Moskenesveien, Tind, Å, Moskenes, 诺尔兰郡, 8392, 挪威"
+              }
+            }
+          ],
+          "ai_description": "將近午夜，Å 的街道空無一人，只有山、海與天空彼此低聲對話。長曝光之下，雲被拉出柔軟的紋理，漁村的燈火像散落在雪地上的細碎琥珀。這樣的夜，總讓人不自覺放慢呼吸——在極地的冬季裡，黑夜本身就是一種風景。",
+          "tags": [
+            "夜色",
+            "長曝光",
+            "羅弗敦群島",
+            "挪威"
+          ]
+        },
+        {
+          "id": "jnd1ds",
+          "date": "2025-03-05",
+          "time": "23:13",
+          "location": {
+            "lat": 67.94529,
+            "lon": 13.131255,
+            "place_name": "Hamnøy 漁村",
+            "city": "Hamnøya",
+            "country": "挪威",
+            "country_code": "NO",
+            "display_name": "Breisundet bru, Hamnøya, Moskenes, 诺尔兰郡, 8390, 挪威"
+          },
+          "photos": [
+            {
+              "id": "18w9v1",
+              "filename": "IMG20250305231321.HEIC",
+              "thumb": "public/thumbs/18w9v1.jpg",
+              "taken_at": "2025-03-05T15:13:21.000Z",
+              "time": "23:13",
+              "camera": "OPPO OPPO Find X8 Pro",
+              "lens": "OPPO Find X8 Pro  back camera 6.06mm f/1.6",
+              "settings": {
+                "iso": 12800,
+                "f": "f/1.6",
+                "shutter": 0.302557346,
+                "focal": "6mm"
+              },
+              "location": {
+                "lat": 67.94529,
+                "lon": 13.131255,
+                "place_name": "Hamnøy 漁村",
+                "city": "Hamnøya",
+                "country": "挪威",
+                "country_code": "NO",
+                "display_name": "Breisundet bru, Hamnøya, Moskenes, 诺尔兰郡, 8390, 挪威"
+              }
+            }
+          ],
+          "ai_description": "再次回到 Breisundet 橋，這次是深夜。零下的寒風從峽灣穿過，相機架穩，快門等待著那一瞬間——雲隙之間是否會透出那道綠光。羅弗敦在三月正值極光季尾聲，每個站在橋上的人，都在與冬天最後一次低聲告別。",
+          "tags": [
+            "極光季",
+            "深夜",
+            "羅弗敦群島",
+            "挪威"
+          ]
+        },
+        {
+          "id": "iupexc",
+          "date": "2025-03-06",
+          "time": "19:56",
+          "location": {
+            "lat": 67.946253,
+            "lon": 13.13165,
+            "place_name": "Reine 漁村",
+            "city": "Hamnøya",
+            "country": "挪威",
+            "country_code": "NO",
+            "display_name": "Reine, Hamnøya, Moskenes, 诺尔兰郡, 挪威"
+          },
+          "photos": [
+            {
+              "id": "9ct10d",
+              "filename": "IMG_5185.JPG",
+              "thumb": "public/thumbs/9ct10d.jpg",
+              "taken_at": "2025-03-06T11:56:58.000Z",
+              "time": "19:56",
+              "camera": "Apple iPhone 16 Pro",
+              "lens": "iPhone 16 Pro back triple camera 6.765mm f/1.78",
+              "settings": {
+                "iso": 500,
+                "f": "f/1.7799999713880652",
+                "shutter": 0.04,
+                "focal": "7mm"
+              },
+              "location": {
+                "lat": 67.946253,
+                "lon": 13.13165,
+                "place_name": "Reine 漁村",
+                "city": "Hamnøya",
+                "country": "挪威",
+                "country_code": "NO",
+                "display_name": "Reine, Hamnøya, Moskenes, 诺尔兰郡, 挪威"
+              }
+            }
+          ],
+          "ai_description": "Reine 常被譽為全世界最美的漁村之一，而此刻，我終於親眼見到為什麼。夕陽尚未完全沉入海面，尖銳的花崗岩山脈 Reinefjorden 在淡金色的光裡顯得格外肅穆。紅白相間的漁屋沿著海灣羅列，像一首安靜到幾乎不想被打擾的詩。",
+          "tags": [
+            "Reine",
+            "羅弗敦群島",
+            "夕陽",
+            "挪威"
+          ]
+        },
+        {
+          "id": "9j9cgp",
+          "date": "2025-03-07",
+          "time": "10:24",
+          "location": {
+            "lat": 67.946244,
+            "lon": 13.1317,
+            "place_name": "Reine 漁村",
+            "city": "Hamnøya",
+            "country": "挪威",
+            "country_code": "NO",
+            "display_name": "Reine, Hamnøya, Moskenes, 诺尔兰郡, 挪威"
+          },
+          "photos": [
+            {
+              "id": "eu3bt6",
+              "filename": "IMG_5201.jpg",
+              "thumb": "public/thumbs/eu3bt6.jpg",
+              "taken_at": "2025-03-07T02:24:56.000Z",
+              "time": "10:24",
+              "camera": "Apple iPhone 16 Pro",
+              "lens": "iPhone 16 Pro back triple camera 6.765mm f/1.78",
+              "settings": {
+                "iso": 64,
+                "f": "f/1.7799999713880652",
+                "shutter": 0.004219409282700422,
+                "focal": "7mm"
+              },
+              "location": {
+                "lat": 67.946244,
+                "lon": 13.1317,
+                "place_name": "Reine 漁村",
+                "city": "Hamnøya",
+                "country": "挪威",
+                "country_code": "NO",
+                "display_name": "Reine, Hamnøya, Moskenes, 诺尔兰郡, 挪威"
+              }
+            },
+            {
+              "id": "bhy3nf",
+              "filename": "IMG_5202.jpg",
+              "thumb": "public/thumbs/bhy3nf.jpg",
+              "taken_at": "2025-03-07T02:24:57.000Z",
+              "time": "10:24",
+              "camera": "Apple iPhone 16 Pro",
+              "lens": "iPhone 16 Pro back triple camera 6.765mm f/1.78",
+              "settings": {
+                "iso": 64,
+                "f": "f/1.7799999713880652",
+                "shutter": 0.004219409282700422,
+                "focal": "7mm"
+              },
+              "location": {
+                "lat": 67.946244,
+                "lon": 13.1317,
+                "place_name": "Reine 漁村",
+                "city": "Hamnøya",
+                "country": "挪威",
+                "country_code": "NO",
+                "display_name": "Reine, Hamnøya, Moskenes, 诺尔兰郡, 挪威"
+              }
+            },
+            {
+              "id": "x0x3vy",
+              "filename": "IMG_5204.jpg",
+              "thumb": "public/thumbs/x0x3vy.jpg",
+              "taken_at": "2025-03-07T02:25:07.000Z",
+              "time": "10:25",
+              "camera": "Apple iPhone 16 Pro",
+              "lens": "iPhone 16 Pro back triple camera 6.765mm f/1.78",
+              "settings": {
+                "iso": 64,
+                "f": "f/1.7799999713880652",
+                "shutter": 0.003676470588235294,
+                "focal": "7mm"
+              },
+              "location": {
+                "lat": 67.946219,
+                "lon": 13.131706,
+                "place_name": "Reine 漁村",
+                "city": "Hamnøya",
+                "country": "挪威",
+                "country_code": "NO",
+                "display_name": "Reine, Hamnøya, Moskenes, 诺尔兰郡, 挪威"
+              }
+            }
+          ],
+          "ai_description": "早晨十點的 Reine，陽光終於翻越山脊、落在村落上。北極圈的冬季陽光來得遲、走得早，每一縷光都顯得格外珍貴。走在結凍的木棧道上，看海水在低溫下依然清澈透藍，遠方的 Olstind 山尖覆著粉雪——這是羅弗敦最經典、也最無可取代的一張明信片。",
+          "tags": [
+            "Reine",
+            "羅弗敦群島",
+            "晨光",
+            "挪威"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "drcv2f",
+      "title": "2026 台灣・新竹夜食",
+      "subtitle": "在滾燙鐵板前，延長一座城市的夜晚",
+      "date_start": "2026-04-04",
+      "date_end": "2026-04-04",
+      "cover_photo_id": "j6rv4q",
+      "stats": {
+        "photos": 2,
+        "entries": 1,
+        "locations": 1,
+        "days": 1,
+        "km": 0
+      },
+      "entries": [
+        {
+          "id": "kuh779",
+          "date": "2026-04-04",
+          "time": "00:26",
+          "location": {
+            "lat": 24.8066,
+            "lon": 120.9638,
+            "place_name": "邦の鐵板燒",
+            "city": "新竹市",
+            "country": "台灣",
+            "country_code": "TW",
+            "display_name": "邦の鐵板燒, 中正路271號, 北區, 新竹市, 台灣"
+          },
+          "photos": [
+            {
+              "id": "j6rv4q",
+              "filename": "IMG_5625.jpeg",
+              "thumb": "public/thumbs/j6rv4q.jpg",
+              "taken_at": "2026-04-04T16:26:26.540Z",
+              "time": "00:26",
+              "camera": null,
+              "lens": null,
+              "settings": null,
+              "location": {
+                "lat": 24.8066,
+                "lon": 120.9638,
+                "place_name": "邦の鐵板燒",
+                "city": "新竹市",
+                "country": "台灣",
+                "country_code": "TW",
+                "display_name": "邦の鐵板燒, 中正路271號, 北區, 新竹市, 台灣"
+              }
+            },
+            {
+              "id": "7io9kg",
+              "filename": "IMG_5632.jpeg",
+              "thumb": "public/thumbs/7io9kg.jpg",
+              "taken_at": "2026-04-04T16:26:26.592Z",
+              "time": "00:26",
+              "camera": null,
+              "lens": null,
+              "settings": null,
+              "location": {
+                "lat": 24.8066,
+                "lon": 120.9638,
+                "place_name": "邦の鐵板燒",
+                "city": "新竹市",
+                "country": "台灣",
+                "country_code": "TW",
+                "display_name": "邦の鐵板燒, 中正路271號, 北區, 新竹市, 台灣"
+              }
+            }
+          ],
+          "ai_description": "夜色降臨後走進邦の鐵板燒，滾燙的鐵板上油脂輕輕作響，香氣隨著廚師俐落的翻動在空氣中散開。坐在吧台前，每一道菜都是一場近距離演出——從食材下鍋到盛盤上桌，節奏分明而講究。新竹這座城市的夜晚，就在這塊熾熱鐵板前慢慢延長。",
+          "tags": [
+            "鐵板燒",
+            "新竹",
+            "夜食",
+            "美食"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "blog",
+      "runtimeExecutable": "/opt/homebrew/bin/node",
+      "runtimeArgs": ["/Users/justinmac/Documents/my_projects/photo-journey/serve.js"],
+      "port": 3456
+    }
+  ]
+}
