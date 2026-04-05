@@ -55,3 +55,9 @@ photo-journey/
 - **反向地理編碼**：[OpenStreetMap Nominatim](https://nominatim.org/) (免費、無 API key)
 - **AI 撰寫**：Claude (via skill)
 - **前端**：純 HTML/CSS/JS，無建置流程
+
+## Deploy
+
+```
+npx vercel --prod
+```

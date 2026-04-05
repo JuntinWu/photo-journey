@@ -5,3 +5,4 @@ public/thumbs/*
 !public/thumbs/.gitkeep
 .DS_Store
 *.log
+.vercel
