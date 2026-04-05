@@ -1,8 +1,7 @@
 node_modules/
 photos/*
 !photos/.gitkeep
-public/thumbs/*
-!public/thumbs/.gitkeep
 .DS_Store
 *.log
 .vercel
+dist/
